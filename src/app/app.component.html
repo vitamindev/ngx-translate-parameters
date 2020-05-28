@@ -4,19 +4,35 @@
 </div>
 
 <div>
-  <p>Parameter values provided:</p>
-  {{ "TEXT" | translate: { value1: "James", value2: "Mary" } }}
-  <div
-    [translate]="'TEXT'"
-    [translateParams]="{ value1: 'James', value2: 'Mary' }"
-  ></div>
-</div>
-
-<div>
   <p>Parameter variables provided:</p>
-  {{ "TEXT" | translate: { value1: paramValue1, value2: paramValue2 } }}
-  <div
-    [translate]="'TEXT'"
-    [translateParams]="{ value1: paramValue1, value2: paramValue2 }"
-  ></div>
+  <ul>
+    <li>
+      In template with pipe:
+      <p>
+        {{ "TEXT" | translate: { value1: paramValue1, value2: paramValue2 } }}
+      </p>
+    </li>
+    <li>
+      In template with directive (key as attribute):
+      <p
+        [translate]="'TEXT'"
+        [translateParams]="{ value1: paramValue1, value2: paramValue2 }"
+      ></p>
+    </li>
+    <li>
+      In template with directive (key as content):
+      <p
+        translate
+        [translateParams]="{ value1: paramValue1, value2: paramValue2 }"
+      >
+        TEXT
+      </p>
+    </li>
+    <li>
+      In code with API:
+      <p>
+        {{ stringInCode }}
+      </p>
+    </li>
+  </ul>
 </div>
